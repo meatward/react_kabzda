@@ -1,0 +1,7 @@
+.music {
+    display: flex;
+    flex-direction: column;
+    font-size: 600;
+    color: chartreuse;
+    border: crimson 1px solid;
+}

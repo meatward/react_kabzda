@@ -1,0 +1,21 @@
+
+.item{
+  color: greenyellow;
+  font-size: 50px;
+}
+
+.postBlock {
+  padding: 10px;
+}
+
+.posts{
+  margin-top: 10px;
+}
+
+h3{
+  position: absolute;
+  top: 0;
+  color: rgba(255, 255, 255, 0.781);
+  font-weight: 700;
+  font-size: 200px;
+}

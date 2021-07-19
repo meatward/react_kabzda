@@ -1,0 +1,20 @@
+
+
+.nav{
+  grid-area: n;
+  background-color:deepskyblue;
+  &__item{
+    color: green;
+  }
+}
+
+.item a{
+  color: bisque;
+  text-decoration: none;
+}
+
+.item a.active{
+  color: green;
+  font-size: 20px;
+}
+
