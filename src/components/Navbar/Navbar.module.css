@@ -18,3 +18,21 @@
   font-size: 20px;
 }
 
+
+.friendsarea{
+  
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  color: azure;
+  margin-top: 100px;
+}
+
+.friends{
+  font-size: 10px;
+}
+
+.friends img{
+  width: 30px;
+  border-radius: 50%;
+}

@@ -8,18 +8,27 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import { BrowserRouter, Route } from 'react-router-dom';
 
+let someComponent = ()=> <Music />
 
-const App = () => {
+
+const App = (p) => {
+
+  
+  
+
   return (
     <BrowserRouter>
     <div className='app-wrapper'>
       <Header />
-      <Navbar />
-      {/* <Profile /> */}
+      <Navbar bigData={p.bigData.dialogsP.dData} img={p.bigData.img}/>
       <div className= 'app-wrapper-content' >
-        <Route path='/messages' component={Dialogs}/>
-        <Route path='/profile' component={Profile}/>
-        <Route exact path='/music' component={Music}/>
+
+        <Route path='/messages' render={()=><Dialogs bigData={p.bigData.dialogsP} imgs={p.bigData.img} />} /> 
+
+        <Route path='/profile' render={()=><Profile bigData={p.bigData.profileP} addPost={p.addPost} updateNewpost={p.updateNewpost} />} />
+
+        <Route exact path='/music' component={someComponent}/>
+
         <Route path='/news' component={News}/>
     
       </div>
