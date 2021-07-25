@@ -83,4 +83,5 @@ export let addclick=()=>{
 
 
 
+
   export default bigData;
