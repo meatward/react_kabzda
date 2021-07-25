@@ -10,7 +10,13 @@ const Profile = (p) =>{
         <div>
           <ProfileInfo /></div>
           
-      <MyPosts bigData={p.bigData.postData} addPost={p.addPost} newPostttx={p.bigData.newPostttx} updateNewpost={p.updateNewpost}/>
+      <MyPosts bigData={p.bigData.postData}
+      bigData2={p.bigData} 
+      addPost={p.addPost} 
+      newPostttx={p.bigData.newPostttx} 
+      updateNewpost={p.updateNewpost}
+      updateskoba={p.updateskoba}
+      addclick={p.addclick} />
       </div>
     )
 }

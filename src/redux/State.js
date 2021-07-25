@@ -39,8 +39,14 @@ let bigData = {
     {id:1, message:'world go walk lov 9..9', likesCount:12},
     {id:2, message:'soBA4 KAAA1111!11', likesCount:12}
   ]
+,
+
+skoba: 'o'
+
 }
 }
+
+// window.bigData=bigData;
 
 export let addPost =(postmsg) => {
  
@@ -51,7 +57,7 @@ export let addPost =(postmsg) => {
     likesCount: 3
   };
   bigData.profileP.postData.push(newpost);
-  rerender(bigData, addPost);
+  rerender(bigData);
 }
 
 export let updateNewpost =(newText)=>{
@@ -59,4 +65,22 @@ export let updateNewpost =(newText)=>{
  
  rerender(bigData);
 }
+
+export let updateskoba=(text)=>{
+bigData.profileP.skoba = text;
+rerender(bigData);
+}
+
+export let addclick=()=>{
+  let text ={
+    id:6,
+    message:bigData.profileP.skoba
+  };
+  bigData.dialogsP.MSGdata.push(text);
+  bigData.profileP.skoba ='';
+  rerender(bigData);
+}
+
+
+
   export default bigData;

@@ -29,11 +29,22 @@ let textdiv = React.createRef();
     
   }
 
+  let refcarra = React.createRef();
+
+  let cappa =()=>{
+    let carra3=refcarra.current.value;
+    console.log(p.bigData2.skoba);
+    p.updateskoba(carra3);
+  }
+
     return (
       <div className={cls.postBlock}>
         <h3></h3>
         <div>
           <textarea onChange={onpost} ref={textpost} rows="10" cols='10' value={p.newPostttx}/>
+          8-8 
+          <textarea value={p.bigData2.skoba} onChange={cappa} ref={refcarra} cols="30" rows="10"></textarea>
+          <button onClick={p.addclick}>xXx-plus texXx</button>
         </div>
         <div ref={textdiv}>text</div>
         <div>

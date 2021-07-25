@@ -25,7 +25,12 @@ const App = (p) => {
 
         <Route path='/messages' render={()=><Dialogs bigData={p.bigData.dialogsP} imgs={p.bigData.img} />} /> 
 
-        <Route path='/profile' render={()=><Profile bigData={p.bigData.profileP} addPost={p.addPost} updateNewpost={p.updateNewpost} />} />
+        <Route path='/profile' render={()=><Profile
+         bigData={p.bigData.profileP} 
+         addPost={p.addPost} 
+         updateNewpost={p.updateNewpost}
+         updateskoba={p.updateskoba}
+         addclick={p.addclick} />} />
 
         <Route exact path='/music' component={someComponent}/>
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import bigData from './redux/State';
+
 // import ReactDOM from 'react-dom';
 // import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
+import bigData from './redux/State';
 import { rerender } from './Render';
 
 // addPost('saf44.og');
