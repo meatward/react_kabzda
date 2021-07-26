@@ -16,7 +16,6 @@ let textpost = React.createRef();
 let textdiv = React.createRef();
 
   let addpost=()=>{
-    
     let text = textpost.current.value;
     p.addPost(text);
     // textpost.current.value = '';
