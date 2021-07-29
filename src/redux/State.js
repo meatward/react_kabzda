@@ -1,3 +1,9 @@
+const UPDATE_POST = 'UPDATE-POST';
+const UPDATE_CLICK = 'UPDATE-CLICK';
+const ADD_CLICK = 'ADD-CLICK';
+const ADD_POST = 'ADD-POST';
+const BODY_NEW = 'BODY-NEW';
+const ADD_MSG = 'ADD-MSG'
 
 let store = {
 
@@ -34,7 +40,8 @@ let store = {
           { id: 1, message: 'dfgsdf fdsg  re' },
           { id: 3, message: 'o44-4-444--lol' },
           { id: 3, message: 'olol' }
-        ]
+        ],
+    newMSGbody: ""
     },
     profileP: {
       newPostttx: 'slash mega'
@@ -47,7 +54,8 @@ let store = {
 
       skoba: 'o'
 
-    }
+    },
+    sidebar:{}
   },
 
   port(ex) {
@@ -59,47 +67,63 @@ let store = {
     return this._bigData;
   },
 
-  // window.bigData=bigData;
-
-  addPost(postmsg) {
-
-    let newpost = {
-
-      id: 5,
-      message: postmsg,
-      likesCount: 3
-    };
-    this._bigData.profileP.postData.push(newpost);
-
-    this._callscriber(this._bigData);
-  },
-
-  addclick() {
-    debugger;
-    let text = {
-      id: 6,
-      message: this._bigData.profileP.skoba
-    };
-    this._bigData.dialogsP.MSGdata.push(text);
-    this._bigData.profileP.skoba = '';
-    this._callscriber(this._bigData);
-    debugger;
-  },
-
-  updateNewpost(newText) {
-    this._bigData.profileP.newPostttx = newText;
-    this._callscriber(this._bigData);
-  },
-
-  updateskoba(text) {
-    this._bigData.profileP.skoba = text;
-    this._callscriber(this._bigData);
-  },
-
   dispatch(action){
-    if (action.type === '')
-
+    if (action.type === ADD_POST) {   
+      let newpost = {
+        id: 5,
+        message: action.postmsg,
+        likesCount: 3
+      };
+      this._bigData.profileP.postData.push(newpost);
+      this._callscriber(this._bigData);   
+    } else if (action.type === BODY_NEW){   
+    this._bigData.dialogsP.newMSGbody = action.bodytxt;
+    debugger;
+    this._callscriber(this._bigData);
+    } else if (action.type===ADD_MSG) {
+      let msg = this._bigData.dialogsP.newMSGbody;
+      let text={
+        id:7,
+        message: msg
+      }
+      this._bigData.dialogsP.MSGdata.push(text);
+      this._callscriber(this._bigData);
+      this._bigData.dialogsP.newMSGbody = "";
+    } else if (action.type===ADD_CLICK) {
+      let text = {
+        id: 6,
+        message: this._bigData.profileP.skoba
+      };
+      this._bigData.dialogsP.MSGdata.push(text);
+      this._bigData.profileP.skoba = '';
+      this._callscriber(this._bigData);
+    }
+    else if (action.type===UPDATE_POST){
+      debugger;
+      this._bigData.profileP.newPostttx = action.newText;
+      debugger;
+      this._callscriber(this._bigData);
   }
+    else if (action.type===UPDATE_CLICK){
+      this._bigData.profileP.skoba = action.text;
+    this._callscriber(this._bigData);
+  }
+    
+  }
+}
+
+export const ACaddpost=(text)=>({type:ADD_POST, postmsg:text})
+
+export const ACupdatepost0=()=>({type:UPDATE_POST, newText:''})
+export const ACupdatepost=(text)=>({type:UPDATE_POST, newText:text})
+export const ACbodytxt=(ttx5)=>({type:BODY_NEW, bodytxt:ttx5})
+debugger;
+export const ACaddmsg=()=>({type:ADD_MSG})
+export const ACupdateclick =(carra3)=>{
+  return {type: UPDATE_CLICK, text: carra3 };
+}
+export const ACaddclick=()=>{
+ return {type:ADD_CLICK}
 }
 
 

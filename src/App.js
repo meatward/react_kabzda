@@ -23,19 +23,29 @@ const App = (p) => {
       <Navbar bigData={p.bigData.dialogsP.dData} img={p.bigData.img}/>
       <div className= 'app-wrapper-content' >
 
-        <Route path='/messages' render={()=><Dialogs bigData={p.bigData.dialogsP} imgs={p.bigData.img} />} /> 
+        <Route path='/messages' render={()=><Dialogs 
+        bigData={p.bigData.dialogsP} 
+        imgs={p.bigData.img}
+        dispatch ={p.dispatch} />} /> 
 
         <Route path='/profile' render={()=><Profile
          bigData={p.bigData.profileP} 
-         addPost={p.addPost} 
-         updateNewpost={p.updateNewpost}
-         updateskoba={p.updateskoba}
-         addclick={p.addclick} />} />
+         
+        dispatch ={p.dispatch}
+        
+        />} />
 
         <Route exact path='/music' component={someComponent}/>
 
         <Route path='/news' component={News}/>
     
+        <Route path='/message/0' component={News} />
+        <Route path='/message/1' render={()=><Profile
+         bigData={p.bigData.profileP} 
+         
+        dispatch ={p.dispatch}
+        
+        />} />
       </div>
     </div>
     

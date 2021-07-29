@@ -12,11 +12,10 @@ const Profile = (p) =>{
           
       <MyPosts bigData={p.bigData.postData}
       bigData2={p.bigData} 
-      addPost={p.addPost} 
-      newPostttx={p.bigData.newPostttx} 
-      updateNewpost={p.updateNewpost}
-      updateskoba={p.updateskoba}
-      addclick={p.addclick} />
+      
+      dispatch ={p.dispatch}
+      
+      />
       </div>
     )
 }
