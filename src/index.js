@@ -9,7 +9,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import store from './redux/State';
+import store from './redux/redux-store';
+import {bodyupdate} from './redux/redux-store'
 
 
 let rerender = (bigdata) => {
@@ -18,18 +19,21 @@ let rerender = (bigdata) => {
       <React.StrictMode>
         <App bigData={bigdata} 
              dispatch={store.dispatch.bind(store)}
-        
+             
+              
          />
       </React.StrictMode>,
       document.getElementById('root')
     
     );
+    debugger;
     }
         
-rerender(store.getData());
+rerender(store.getState());
 
-store.port(rerender);
-
+store.subscribe(()=>{
+  let state = store.getState(); 
+  rerender(state)});
 
 reportWebVitals();
 

@@ -11,13 +11,14 @@ const Profile = (p) =>{
           <ProfileInfo /></div>
           
       <MyPosts bigData={p.bigData.postData}
-      bigData2={p.bigData} 
+      bigData2={p.bigData2} 
       
       dispatch ={p.dispatch}
       
       />
       </div>
     )
+    
 }
 
 export default Profile;

@@ -5,7 +5,7 @@ import DialogItem2 from './DialogItem/DialogItem';
 import { ACaddmsg, ACbodytxt } from '../../redux/dialogs-RDC';
 
 
-const Dialogs = (p) => {
+const DialogsCont = (p) => {
   
     let msgadd = React.createRef();
     let msgRefbut = React.createRef();
@@ -36,28 +36,8 @@ const Dialogs = (p) => {
 let msg3elem = MSGelem
 
     return (
-        <div className={cls.dialogs}>
-            <div className={cls.dialog__item}>
-                { dElements }
-
-                {/* <DialogItem name={dData[0].name} id={dData[0].id}/>
-            <DialogItem name={dData[1].name} id={dData[1].id}/>
-            <DialogItem name={dData[2].name} id={dData[2].id}/>
-             */}
-
-            </div>
-
-            <div>
-                <div>{msg3elem}</div>
-                <textarea value={bodyvalue} ref={msgadd} onChange={msgbody} cols="30" rows="10"></textarea>
-                <button ref={msgRefbut} onClick={msgpost}>hello</button>
-                
-                {/* <Message message={MSGs[0].message} id={MSGs[0].id} />
-            <Message message={MSGs[1].message} id={MSGs[1].id} /> */}
-
-            </div>
-        </div>
+       <Dialogs />
     )
 }
 
-export default Dialogs;
+export default DialogsCont;

@@ -16,6 +16,7 @@ const App = (p) => {
   
   
 
+  debugger;
   return (
     <BrowserRouter>
     <div className='app-wrapper'>
@@ -26,11 +27,12 @@ const App = (p) => {
         <Route path='/messages' render={()=><Dialogs 
         bigData={p.bigData.dialogsP} 
         imgs={p.bigData.img}
-        dispatch ={p.dispatch} />} /> 
+        dispatch ={p.dispatch} />}
+         /> 
 
         <Route path='/profile' render={()=><Profile
          bigData={p.bigData.profileP} 
-         
+         bigData2 ={p.bigData}
         dispatch ={p.dispatch}
         
         />} />
@@ -42,7 +44,7 @@ const App = (p) => {
         <Route path='/message/0' component={News} />
         <Route path='/message/1' render={()=><Profile
          bigData={p.bigData.profileP} 
-         
+         bigData2 ={p.bigData}
         dispatch ={p.dispatch}
         
         />} />

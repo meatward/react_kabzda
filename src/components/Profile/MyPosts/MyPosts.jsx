@@ -1,11 +1,11 @@
 import React from 'react';
 import cls from './MyPosts.module.css';
 import Post from './Post/Post';
-import { ACaddclick, ACupdateclick, ACupdatepost, ACupdatepost0, ACaddpost } from '../../../redux/State';
+import { ACaddclick, ACupdateclick, ACupdatepost, ACupdatepost0, ACaddpost } from '../../../redux/profile-RDC';
 
 const MyPosts = (p) =>{
 
-let postEs = p.bigData.map(psts => <Post message={psts.message} id={psts.id} likesCount={psts.likesCount} />)
+let postEs = p.bigData2.profileP.postData.map(psts => <Post message={psts.message} id={psts.id} likesCount={psts.likesCount} />)
 
 let textpost = React.createRef();
 let textdiv = React.createRef();
@@ -19,32 +19,38 @@ let textdiv = React.createRef();
   }
 
   let onpost = ()=>{
-    debugger;
+   
+debugger;
     let text = textpost.current.value;
+    
+debugger;
     p.dispatch(ACupdatepost(text));
-    debugger;
+    
+debugger;
   }
+  
 
   let refcarra = React.createRef();
 
   let cappa =()=>{
-    debugger;
+   
     let carra3=refcarra.current.value;
     p.dispatch(ACupdateclick(carra3));
   }
 
   let clickpost =()=>{
-    debugger;
+  
     p.dispatch(ACaddclick())
+   
   }
 
     return (
       <div className={cls.postBlock}>
         <h3></h3>
         <div>
-          <textarea onChange={onpost} ref={textpost} rows="10" cols='10' value={p.bigData2.newPostttx}/>
+          <textarea onChange={onpost} ref={textpost} rows="10" cols='10' value={p.bigData2.profileP.newPostttx}/>
           8-8 
-          <textarea value={p.bigData2.skoba} onChange={cappa} ref={refcarra} cols="30" rows="10"></textarea>
+          <textarea value={p.bigData2.profileP.skoba} onChange={cappa} ref={refcarra} cols="30" rows="10"></textarea>
           <button onClick={clickpost}>xXx-plus texXx</button>
         </div>
         <div ref={textdiv}>text</div>
