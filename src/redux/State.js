@@ -14,7 +14,7 @@ let store = {
     
   },
 
-  port(r){
+  subscribe(r){
     this._callscriber = r
     
   },

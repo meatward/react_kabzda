@@ -1,74 +1,55 @@
 import React from 'react';
 import cls from './MyPosts.module.css';
 import Post from './Post/Post';
-import { ACaddclick, ACupdateclick, ACupdatepost, ACupdatepost0, ACaddpost } from '../../../redux/profile-RDC';
 
 const MyPosts = (p) =>{
 
-let postEs = p.bigData2.profileP.postData.map(psts => <Post message={psts.message} id={psts.id} likesCount={psts.likesCount} />)
+let postEs = p.postDataMap.map(psts => <Post message={psts.message} id={psts.id} likesCount={psts.likesCount} />)
 
 let textpost = React.createRef();
-let textdiv = React.createRef();
-
-
-  let addpost=()=>{
-    let text = textpost.current.value;
-    p.dispatch(ACaddpost(text));
-    // textpost.current.value = '';
-    p.dispatch(ACupdatepost0());
-  }
-
-  let onpost = ()=>{
-   
-debugger;
-    let text = textpost.current.value;
-    
-debugger;
-    p.dispatch(ACupdatepost(text));
-    
-debugger;
-  }
-  
-
   let refcarra = React.createRef();
 
-  let cappa =()=>{
-   
-    let carra3=refcarra.current.value;
-    p.dispatch(ACupdateclick(carra3));
-  }
+let clickChange = ()=>{
+  let ttx = refcarra.current.value;
+  p.cappa(ttx)
+}
 
-  let clickpost =()=>{
-  
-    p.dispatch(ACaddclick())
-   
-  }
+let onclick =()=>{
+  p.clickpost();
+}
 
-    return (
-      <div className={cls.postBlock}>
-        <h3></h3>
-        <div>
-          <textarea onChange={onpost} ref={textpost} rows="10" cols='10' value={p.bigData2.profileP.newPostttx}/>
-          8-8 
-          <textarea value={p.bigData2.profileP.skoba} onChange={cappa} ref={refcarra} cols="30" rows="10"></textarea>
-          <button onClick={clickpost}>xXx-plus texXx</button>
-        </div>
-        <div ref={textdiv}>text</div>
-        <div>
-        <button onClick={addpost}>Add +</button>
-        </div>
-        
+let clickvalue = p.clickValue
+
+  return (
+    <div className={cls.postBlock}>
+      <h3></h3>
+      <div>
+{/* 
+        <textarea onChange={(e)=>{let text = e.currentTarget.value; p.onpost(text)}} ref={textpost} rows="10" cols='10' value={p.shitValue}/>
+        8-8  */}
+
+        <textarea value={clickvalue} onChange={clickChange} ref={refcarra} cols="30" rows="10"></textarea>
+
+        <button onClick={onclick}>xXx-plus texXx</button>
+
+      </div>
+      <div>
+      {/* <button onClick={()=>{let ttx = textpost.current.value; p.addpost(ttx)}}>Add +</button> */}
+      </div>
+      
+
+    
+<div className={cls.posts}>
   
       
-<div className={cls.posts}>
-    
+        {postEs}
         
-          {postEs}
-          
-          
-        </div>
+        
       </div>
-    )
+    </div>
+  )
 }
 
 export default MyPosts;
+
+

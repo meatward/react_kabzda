@@ -10,7 +10,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import store from './redux/redux-store';
-import {bodyupdate} from './redux/redux-store'
 
 
 let rerender = (bigdata) => {
@@ -18,7 +17,9 @@ let rerender = (bigdata) => {
     ReactDOM.render(
       <React.StrictMode>
         <App bigData={bigdata} 
+              store = {store}
              dispatch={store.dispatch.bind(store)}
+             getState={store.getState}
              
               
          />

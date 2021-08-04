@@ -21,19 +21,20 @@ let stateInit = {
 
 
 const profileRDC = (bigData = stateInit, action)=>{
-
+  
   switch (action.type) {
   case ADD_CLICK:
     let text = {
       id: 6,
-      message:bigData.profileP.skoba,
+      message:bigData.skoba,
+      likesCount: 7
     };
-    bigData.dialogsP.MSGdata.push(text);
-    bigData.profileP.skoba = '';
+    bigData.postData.push(text);
+    bigData.skoba = '';
     return bigData;
   case UPDATE_CLICK:
     // this._bigData.profileP
-    bigData.profileP.skoba = action.text;
+    bigData.skoba = action.text;
     //   this._callscriber(this._bigData);
     return bigData;
   case ADD_POST:
@@ -51,7 +52,6 @@ const profileRDC = (bigData = stateInit, action)=>{
     return bigData;
   }
 }
-
 export const ACaddpost=(text)=>({type:ADD_POST, postmsg:text})
 export const ACupdatepost0=()=>({type:UPDATE_POST, newText:''})
 export const ACupdatepost=(text)=>({type:UPDATE_POST, newText:text})

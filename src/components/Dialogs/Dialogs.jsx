@@ -2,38 +2,27 @@ import React from 'react';
 import cls from './Dialogs.module.css';
 import Message from './Message/Message';
 import DialogItem2 from './DialogItem/DialogItem';
-import { ACaddmsg, ACbodytxt } from '../../redux/dialogs-RDC';
 
 
 const Dialogs = (p) => {
   
+debugger;
     let msgadd = React.createRef();
     let msgRefbut = React.createRef();
 
-    let msgpost =()=>{
-        p.dispatch(ACaddmsg())
-    }
-    // let msgbody=()=>{
-    //     let text = msgadd.current.value;
-    //     p.dispatch(ACbodytxt(text))
-    // }
 
-    let msgbody=(ev)=>{
-        debugger;
-            let text = ev.target.value;
-         
-            p.dispatch(ACbodytxt(text));
-        }
+    let dElements = p.fnDdataMap.map(dialog => <DialogItem2 name={dialog.name} id={dialog.id} imgs={p.imgs}/>)
 
-    let bodyvalue = p.bigData.newMSGbody;
-
-    let dElements = p.bigData.dData.map(dialog => <DialogItem2 name={dialog.name} id={dialog.id} imgs={p.imgs}/>)
-
-
-    let MSGelem = p.bigData.MSGdata
+    let MSGelem = p.msgMap
         .map(msg => <Message message={msg.message} id={msg.id} />)
 
 let msg3elem = MSGelem
+
+// let bodyChange =(e)=>{
+//     let ttx = e.currentTarget.value;
+//     p.fnUpdateBody(ttx)
+// }
+debugger;
 
     return (
         <div className={cls.dialogs}>
@@ -49,8 +38,8 @@ let msg3elem = MSGelem
 
             <div>
                 <div>{msg3elem}</div>
-                <textarea value={bodyvalue} ref={msgadd} onChange={msgbody} cols="30" rows="10"></textarea>
-                <button ref={msgRefbut} onClick={msgpost}>hello</button>
+                <textarea value={p.fnValue} ref={msgadd} onChange={(e)=>{let ttx = e.currentTarget.value; p.fnUpdateBody(ttx)}} cols="30" rows="10"></textarea>
+                <button ref={msgRefbut} onClick={p.fnClick}>hello</button>
                 
                 {/* <Message message={MSGs[0].message} id={MSGs[0].id} />
             <Message message={MSGs[1].message} id={MSGs[1].id} /> */}
@@ -58,6 +47,7 @@ let msg3elem = MSGelem
             </div>
         </div>
     )
+    debugger;
 }
 
 export default Dialogs;

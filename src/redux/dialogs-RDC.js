@@ -19,15 +19,16 @@ let stateInit = {
       { id: 3, message: 'o44-4-444--lol' },
       { id: 3, message: 'olol' }
     ],
-newMSGbody: ""
+newMSGbody: "676"
 }
 
 const dialogsRDC =(bigData = stateInit, action)=>{
     switch(action.type){
+      
      case BODY_NEW: 
         bigData.newMSGbody = action.bodytxt;
         // this._callscriber(this._bigData);
-        debugger;
+        
         return bigData;
         
         case ADD_MSG:
@@ -49,7 +50,7 @@ const dialogsRDC =(bigData = stateInit, action)=>{
 
 
 
-export const ACbodytxt=(ttx5)=>({type:BODY_NEW, bodytxt:ttx5})
+export const ACbodytxt=(ttx)=>({type:BODY_NEW, bodytxt:ttx})
 export const ACaddmsg=()=>({type:ADD_MSG})
 
 export default dialogsRDC;
