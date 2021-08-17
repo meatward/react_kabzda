@@ -5,8 +5,7 @@ import DialogItem2 from './DialogItem/DialogItem';
 
 
 const Dialogs = (p) => {
-  
-debugger;
+  debugger;
     let msgadd = React.createRef();
     let msgRefbut = React.createRef();
 
@@ -15,7 +14,7 @@ debugger;
 
     let MSGelem = p.msgMap
         .map(msg => <Message message={msg.message} id={msg.id} />)
-
+        debugger;
 let msg3elem = MSGelem
 
 // let bodyChange =(e)=>{
@@ -23,16 +22,11 @@ let msg3elem = MSGelem
 //     p.fnUpdateBody(ttx)
 // }
 debugger;
-
     return (
         <div className={cls.dialogs}>
+           <h1>rthrthrtherth</h1>
             <div className={cls.dialog__item}>
                 { dElements }
-
-                {/* <DialogItem name={dData[0].name} id={dData[0].id}/>
-            <DialogItem name={dData[1].name} id={dData[1].id}/>
-            <DialogItem name={dData[2].name} id={dData[2].id}/>
-             */}
 
             </div>
 

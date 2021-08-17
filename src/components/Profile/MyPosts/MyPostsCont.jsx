@@ -1,43 +1,52 @@
 import React from 'react';
 import { ACaddclick, ACupdateclick, ACupdatepost, ACupdatepost0, ACaddpost } from '../../../redux/profile-RDC';
 import MyPosts from './MyPosts';
+import { connect } from 'react-redux';
 
+// const MyPostsCont = () =>{
 
-const MyPostsCont = (p) =>{
+        
+// let state = store.getState();
 
-let state = p.store.getState();
+// let cappa =(ttx)=>{
+//   let action = ACupdateclick(ttx);
+//   store.dispatch(action);
+// }
 
-  // let addpost=(text)=>{
-  //   let action = ACaddpost(text);
-  //   p.store.dispatch(action);
-  //   p.store.dispatch(ACupdatepost0());
-  // }
+// let clickpost =()=>{
+//   store.dispatch(ACaddclick())
+// }
 
-  // let onpost = (text)=>{
-  //   let action = ACupdatepost(text);
-  //   p.store.dispatch(action);
-  // }
+//      return <MyPosts 
+//       cappa={cappa}
+//       clickpost={clickpost}
+//       postDataMap = {state.profileP.postData}
+//       clickValue = {state.profileP.skoba}
+//       // onpost={onpost}
+//       // shitValue = {p.bigData.profileP.newPostttx}
+//       // addpost={addpost}
+//       />
+//     }
+
+    let f2=(state)=>{
+      return{
+          cappa: (ttx)=>{
+          let action = ACupdateclick(ttx);
+          state.dispatch(action);
+        },
+          clickpost: ()=>{
+          state.dispatch(ACaddclick())
+        }
+      }
+    }
+
+    let f1 =(state)=>{
+      return{
+        postDataMap: state.profileP.postData,
+      clickValue: state.profileP.skoba
+      }
+    }
   
-  let cappa =(ttx)=>{
-    let action = ACupdateclick(ttx);
-    p.store.dispatch(action);
-  }
-
-  let clickpost =()=>{
-    p.store.dispatch(ACaddclick())
-  }
-
-    return (
-      <MyPosts 
-      cappa={cappa}
-      clickpost={clickpost}
-      postDataMap = {state.profileP.postData}
-      clickValue = {state.profileP.skoba}
-      // onpost={onpost}
-      // shitValue = {p.bigData.profileP.newPostttx}
-      // addpost={addpost}
-      />
-    )
-}
+    const MyPostsCont = connect(f1, f2)(MyPosts);
 
 export default MyPostsCont;

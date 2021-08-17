@@ -3,6 +3,8 @@ import profileRDC from "./profile-RDC";
 import dialogsRDC from './dialogs-RDC';
 import sidebarRDC from './sidebar-RDC';
 
+import React from 'react';
+
 let reducers = combineReducers({
     profileP:profileRDC,
     dialogsP:dialogsRDC,
@@ -13,6 +15,8 @@ let reducers = combineReducers({
 let store = createStore(reducers);
 
 
-
+// bigData={p.bigData}
+// dispatch ={p.dispatch}
+// store = {p.store}
 
 export default store;

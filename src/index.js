@@ -10,24 +10,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import store from './redux/redux-store';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 
 let rerender = (bigdata) => {
 
     ReactDOM.render(
       <React.StrictMode>
-        <App bigData={bigdata} 
-              store = {store}
-             dispatch={store.dispatch.bind(store)}
-             getState={store.getState}
+        
+    <BrowserRouter>
+    <Provider store={store}>
+        <App
+            //  bigData={bigdata} 
+            //  dispatch={store.dispatch.bind(store)}
+            //  getState={store.getState}
              
-              
          />
+         </Provider>
+         </BrowserRouter>
       </React.StrictMode>,
       document.getElementById('root')
     
-    );
-    debugger;
+    )
     }
         
 rerender(store.getState());
