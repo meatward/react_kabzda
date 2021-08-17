@@ -3,22 +3,9 @@ import { ACaddmsg, ACbodytxt } from '../../redux/dialogs-RDC';
 import Dialogs from './Dialogs';
 import {connect} from 'react-redux';
 
-// const DialogsCont = (p) => {
-    
-//     return (
-//        <Dialogs
-//        />
-//      )
-//     } 
-
-let f1=(state)=>{
-        return{
-            fnClick: (state)=>{state.dispatch(ACaddmsg())},
-            fnUpdateBody: (ttx)=>{let action=ACbodytxt(ttx);state.dispatch(action)}
-        }
-    }
 
 let f2=(state)=>{
+    
     return{
         fnDdataMap: state.dialogsP.dData,
        msgMap:state.dialogsP.MSGdata,
@@ -28,7 +15,14 @@ let f2=(state)=>{
 }
 
 
-let DialogsCont = connect(f1,f2)(Dialogs);
+let f1=(dispatch)=>{
+    debugger;
+        return{
+            fnClick: ()=>{dispatch(ACaddmsg())},
+            fnUpdateBody: (ttx)=>{let action=ACbodytxt(ttx);dispatch(action)}
+        }
+    }
+const DialogsCont = connect(f2,f1)(Dialogs);
 
 
 

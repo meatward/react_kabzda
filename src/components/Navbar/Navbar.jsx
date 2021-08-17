@@ -23,9 +23,9 @@ const Navbar = (p) => {
 
       <div className={cls.friends}>
         <div>
-          <Provider>
+          {/* <Provider>
           <Friends />
-          </Provider>
+          </Provider> */}
           </div>
       <div className={cls.item}></div>
       </div>

@@ -3,39 +3,16 @@ import { ACaddclick, ACupdateclick, ACupdatepost, ACupdatepost0, ACaddpost } fro
 import MyPosts from './MyPosts';
 import { connect } from 'react-redux';
 
-// const MyPostsCont = () =>{
 
-        
-// let state = store.getState();
 
-// let cappa =(ttx)=>{
-//   let action = ACupdateclick(ttx);
-//   store.dispatch(action);
-// }
-
-// let clickpost =()=>{
-//   store.dispatch(ACaddclick())
-// }
-
-//      return <MyPosts 
-//       cappa={cappa}
-//       clickpost={clickpost}
-//       postDataMap = {state.profileP.postData}
-//       clickValue = {state.profileP.skoba}
-//       // onpost={onpost}
-//       // shitValue = {p.bigData.profileP.newPostttx}
-//       // addpost={addpost}
-//       />
-//     }
-
-    let f2=(state)=>{
+    let f2=(dispatch)=>{
       return{
           cappa: (ttx)=>{
           let action = ACupdateclick(ttx);
-          state.dispatch(action);
+          dispatch(action);
         },
           clickpost: ()=>{
-          state.dispatch(ACaddclick())
+          dispatch(ACaddclick())
         }
       }
     }
