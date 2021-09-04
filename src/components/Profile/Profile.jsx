@@ -1,17 +1,20 @@
 import React from 'react';
 import MyPostsCont from './MyPosts/MyPostsCont';
 import cls from './Profile.module.css';
-import ProfileInfo from './ProfileInfo/ProfileInfo';
-
+import ProfileInfoCont from './ProfileInfo/ProfileInfoCont';
+import {connect} from 'react-redux';
 import { storeContext } from './../../redux/redux-store';
 
 const Profile = (p) =>{
+debugger;
+  
 
-  debugger
+  
     return (
       <div className={cls.content}>
         <div>
-          <ProfileInfo /></div>
+          <ProfileInfoCont />
+          </div>
           
           <div>
           <MyPostsCont 

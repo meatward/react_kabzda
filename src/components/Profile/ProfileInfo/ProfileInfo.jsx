@@ -1,11 +1,11 @@
 
 import cls from './ProfileInfo.module.css';
 
-const ProfileInfo = () =>{
+const ProfileInfo = (p) =>{
     return (
       <div>
         <div className={cls.ava}>
-        <img src='https://ih1.redbubble.net/image.531824862.7628/flat,750x1000,075,f.u3.jpg'></img></div>
+        <img src={p.ava}></img></div>
 
         <div className={cls.description}>
           ava + description

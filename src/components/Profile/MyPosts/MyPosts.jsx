@@ -3,7 +3,7 @@ import cls from './MyPosts.module.css';
 import Post from './Post/Post';
 
 const MyPosts = (p) =>{
-debugger;
+
 let postEs = p.postDataMap.map(psts => <Post message={psts.message} id={psts.id} likesCount={psts.likesCount} />)
 
 let textpost = React.createRef();

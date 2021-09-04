@@ -1,6 +1,6 @@
 import cls from './Navbar.module.css';
 import { NavLink } from 'react-router-dom';
-import Friends from './Friends/Friends';
+import FriendsCont from './Friends/FriendsCont';
 import { Provider } from 'react-redux';
 //{`${cls.active} ${cls.boo}`}
 
@@ -23,6 +23,7 @@ const Navbar = (p) => {
 
       <div className={cls.friends}>
         <div>
+          <FriendsCont />
           {/* <Provider>
           <Friends />
           </Provider> */}

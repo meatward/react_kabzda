@@ -14,8 +14,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 
-let rerender = (bigdata) => {
-
+debugger;
     ReactDOM.render(
       <React.StrictMode>
         
@@ -33,13 +32,9 @@ let rerender = (bigdata) => {
       document.getElementById('root')
     
     )
-    }
+    
         
-rerender(store.getState());
 
-store.subscribe(()=>{
-  let state = store.getState(); 
-  rerender(state)});
 
 reportWebVitals();
 

@@ -45,7 +45,7 @@ const App = () => {
     
   );
 }
-debugger;
+
 
 
 export default App;

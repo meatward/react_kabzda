@@ -5,7 +5,7 @@ import DialogItem2 from './DialogItem/DialogItem';
 
 
 const Dialogs = (p) => {
-  debugger;
+  
     let msgadd = React.createRef();
     let msgRefbut = React.createRef();
 
@@ -14,14 +14,14 @@ const Dialogs = (p) => {
 
     let MSGelem = p.msgMap
         .map(msg => <Message message={msg.message} id={msg.id} />)
-        debugger;
+        
 let msg3elem = MSGelem
 
 // let bodyChange =(e)=>{
 //     let ttx = e.currentTarget.value;
 //     p.fnUpdateBody(ttx)
 // }
-debugger;
+
     return (
         <div className={cls.dialogs}>
            <h1>rthrthrtherth</h1>
@@ -41,7 +41,7 @@ debugger;
             </div>
         </div>
     )
-    debugger;
+    
 }
 
 export default Dialogs;

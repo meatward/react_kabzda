@@ -13,30 +13,31 @@ let stateInit = {
     { id: 2, message: 'soBA4 KAAA1111!11', likesCount: 12 }
   ]
   ,
-  
 
-  skoba: 'o'
-
+  skoba: 'none'
 }
 
 
 const profileRDC = (bigData = stateInit, action)=>{
   
   switch (action.type) {
-  case ADD_CLICK:
+  case ADD_CLICK:{
+    let stateCopy = {...bigData};
+    stateCopy.postData = [...bigData.postData];
     let text = {
       id: 6,
-      message:bigData.skoba,
+      message:stateCopy.skoba,
       likesCount: 7
     };
-    bigData.postData.push(text);
-    bigData.skoba = '';
-    return bigData;
-  case UPDATE_CLICK:
+    stateCopy.postData.push(text);
+    stateCopy.skoba = '';
+    return stateCopy;}
+  case UPDATE_CLICK:{
+    let stateCopy = {...bigData};
     // this._bigData.profileP
-    bigData.skoba = action.text;
+    stateCopy.skoba = action.text;
     //   this._callscriber(this._bigData);
-    return bigData;
+    return stateCopy;}
   case ADD_POST:
     let newpost = {
       id: 5,
