@@ -10,10 +10,10 @@ const Dialogs = (p) => {
     let msgRefbut = React.createRef();
 
 
-    let dElements = p.fnDdataMap.map(dialog => <DialogItem2 name={dialog.name} id={dialog.id} imgs={p.imgs}/>)
+    let dElements = p.fnDdataMap.map(dialog => <DialogItem2 name={dialog.name} key={dialog.id} id={dialog.id} imgs={p.imgs}/>)
 
     let MSGelem = p.msgMap
-        .map(msg => <Message message={msg.message} id={msg.id} />)
+        .map(msg => <Message message={msg.message} id={msg.id} key={msg.id} />)
         
 let msg3elem = MSGelem
 

@@ -18,7 +18,7 @@ let f2=(state)=>{
 let f1=(dispatch)=>{
     
         return{
-            fnClick: ()=>{dispatch(ACaddmsg())},
+            fnClick: ()=>{dispatch(ACaddmsg())},    
             fnUpdateBody: (ttx)=>{let action=ACbodytxt(ttx);dispatch(action)}
         }
     }

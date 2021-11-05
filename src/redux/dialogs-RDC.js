@@ -23,29 +23,38 @@ newMSGbody: "676"
 }
 
 const dialogsRDC =(bigData = stateInit, action)=>{
+  
     switch(action.type){
       
      case BODY_NEW: {
-        let stateCopy = {...bigData};
-        stateCopy.newMSGbody = action.bodytxt;
+      
+        return { 
+          ...bigData,
+          newMSGbody: action.bodytxt
         // this._callscriber(this._bigData);
-        
-        return stateCopy;}
-        
+        }
+      };
      case ADD_MSG:{
-          let stateCopy = {...bigData};
-          stateCopy.MSGdata = [...bigData.MSGdata];
-          let msg = bigData.newMSGbody;
-          let text={
-            id:7,
-            message: msg,
-          }
-        //   this._bigData.dialogsP
-        stateCopy.MSGdata.push(text);
-        //   this._callscriber(this._bigData);
-        //   this._bigData.dialogsP
-        stateCopy.newMSGbody = "";
-          return stateCopy;}
+      let msg = bigData.newMSGbody;
+        return {
+          ...bigData,
+          MSGdata: [...bigData.MSGdata, {id:8, message: msg}],
+          newMSGbody: ""
+        }
+      };
+        //   let stateCopy = {...bigData};
+        //   stateCopy.MSGdata = [...bigData.MSGdata];
+        //   let msg = bigData.newMSGbody;
+        //   let text={
+        //     id:7,
+        //     message: msg,
+        //   }
+        // //   this._bigData.dialogsP
+        // stateCopy.MSGdata.push(text);
+        // //   this._callscriber(this._bigData);
+        // //   this._bigData.dialogsP
+        // stateCopy.newMSGbody = "";
+        //   return stateCopy;}
         default:
         return bigData;
         }

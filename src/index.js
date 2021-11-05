@@ -14,7 +14,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 
-debugger;
     ReactDOM.render(
       <React.StrictMode>
         

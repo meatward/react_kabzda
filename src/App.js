@@ -8,6 +8,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import { Route } from 'react-router-dom';
 import DialogsCont from './components/Dialogs/DialogsContainer';
+import UsersCont from './components/Users/UsersCont';
 
 let someComponent = ()=> <Music />
 
@@ -33,12 +34,13 @@ const App = () => {
    
         />} />
 
-        <Route exact path='/music' component={someComponent}/>
+        <Route exact path='/music' component={someComponent} />
 
-        <Route path='/news' component={News}/>
+        <Route path='/news' component={News} />
     
         <Route path='/message/0' component={News} />
      
+        <Route path='/users' render={ () => <UsersCont /> } />
         
       </div>
     </div>

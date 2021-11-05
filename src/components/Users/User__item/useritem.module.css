@@ -1,0 +1,12 @@
+.img {
+ width: 100px;
+ height: 100px;
+ border-radius: 15px
+}
+
+.userBox{
+    display: flex;
+    width: 500px;
+    border: 30px rgb(103, 234, 246);
+    margin: 1px
+}
