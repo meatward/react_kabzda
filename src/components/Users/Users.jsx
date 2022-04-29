@@ -1,30 +1,61 @@
 import React from 'react';
-import User__item from './User__item/User__item';
 import * as axios from 'axios';
+import UserItem from './User__item/User__item';
+import styles from './Users.module.css'
 
-const Users = (p) => {
-
-    let getusers = () => {
-    if (p.users1.users.length === 0){
-   
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            p.fnLoadUser(response.data.items)
-        });
-   
+export default class User extends React.Component {
+    constructor(props){   
+        super(props)
     }
-}
-    debugger
 
-    let sUserBox = p.users1.users.map(b => <div> <User__item name={b.name} id={b.id} imgurl={b.photos.small} isfollow={b.isfollow} message={b.message} city={b.city} fnFollow={p.fnFollow} fnUnfollow={p.fnUnfollow} />
+    componentDidMount(){
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pagePos}&count=${this.props.pageSize}`).then(response => {
+                this.props.fnLoadUser(response.data.items)
+            });
+    }
+
+    pageScroll =(xPageNumber)=> {
+        this.props.pageClick(xPageNumber)
+    }
+
+    componentDidUpdate(){
+      
+    }
+
+    
+    render(){
+        let sUserBox = this.props.users1.users.map(b => <div> 
+        <UserItem name={b.name} id={b.id} imgurl={b.photos.small} isfollow={b.isfollow} message={b.message} city={b.city} fnFollow={this.props.fnFollow} fnUnfollow={this.props.fnUnfollow} />
         <div> {b.isfollow
-            ? <button onClick={() => p.fnUnfollow(b.id)} >Follow</button>
-            : <button onClick={() => p.fnFollow(b.id)} >c==3</button>}
-        </div> </div>);
+            ? <button onClick={() => this.props.fnUnfollow(b.id)} >Follow</button>
+            : <button onClick={() => this.props.fnFollow(b.id)} >c==3</button>}
+        </div> 
+        </div>);
+       let styling = {
+            clicked:{
+                color: 'red',
+                fontWeight: 'bold'
+            }
+        }
 
-    return (<div>
-    <button onClick={getusers}>Reload</button>
-        <div>ol{sUserBox}</div>
-    </div>)
+        let pagesCount = Math.ceil(this.props.totalUsersCount/this.props.pageSize);
+        let pages = [];
+        for(let i=1; i<=pagesCount;i++){
+           pages.push(i)
+        }
+        let ololong = pages.map( p=>{
+            return <span className={this.props.pagePos===p ? styles.clicked: ''} onClick={(e)=>this.pageScroll(p)}>{p}</span>
+        })
+       
+// onClick={()=>this.props.pageClick(p)}
+        return (<div>
+            <div>
+                {ololong}
+              
+            </div>
+        <button onClick={null}>777</button>
+            <div>ol{sUserBox}</div>
+        </div>)
+    }
+    
 }
-
-export default Users;

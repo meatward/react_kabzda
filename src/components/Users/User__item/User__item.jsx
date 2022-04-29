@@ -1,8 +1,8 @@
 import styles from './useritem.module.css'
 
 
-const User__item = (p) => {
-    debugger
+const UserItem = (p) => {
+    
     return(
     <div key={p.id} className={styles.userBox}>
         <span>
@@ -19,4 +19,4 @@ const User__item = (p) => {
     
 };
 
-export default User__item;
+export default UserItem;

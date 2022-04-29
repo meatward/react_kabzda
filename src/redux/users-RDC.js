@@ -1,14 +1,17 @@
 const FOLLOW_USER = 'FOLLOW-USER';
 const UNFOLLOW_USER = 'UNFOLLOW-USER';
 const LOAD_USER = 'LOAD-USER';
+const PAGE_CLICK = 'PAGE-CLICK';
 
 let stateInit = {
-  users: [
-]
+  users: [],
+  pageSize: 5,
+  totalUsersCount: 29,
+  pagePos: 5
 }
 
 const usersRDC =(bigData = stateInit, action)=>{
-  debugger
+  
     switch(action.type){
      case FOLLOW_USER: {
          return { ...bigData, 
@@ -38,15 +41,23 @@ const usersRDC =(bigData = stateInit, action)=>{
           users: [...bigData.users, ...action.users]
         }
       }
-        default:
+        
+      case PAGE_CLICK: {
+        return{
+          ...bigData,
+          pagePos: action.number
+        }
+        
+      }
+      default:
         return bigData;
         }
 }
 
 
-
 export const ACfollowing=(id)=>({type:FOLLOW_USER, id});
 export const ACunfollowing=(id)=>({type:UNFOLLOW_USER, id});
 export const ACloaduser=(users)=>({type:LOAD_USER, users});
+export const ACpageclick=(number)=>({type:PAGE_CLICK, number});
 
 export default usersRDC;
