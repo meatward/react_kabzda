@@ -17,9 +17,13 @@ const Navbar = (p) => {
 
       <div className={cls.item}><NavLink to='/news' activeClassName={cls.active}>News</NavLink></div>
 
+      <div className={cls.item}><NavLink to='/users' activeClassName={cls.active}>Users</NavLink></div>
+
       <div className={cls.item} ><NavLink to='/music' activeClassName={cls.active}>Music</NavLink></div>
 
       <div className={cls.item}><NavLink to='/settings' activeClassName={cls.active}>Settings</NavLink></div>
+
+      <div className={cls.item}><NavLink to='/chese' activeClassName={cls.active}>Chese</NavLink></div>
 
       <div className={cls.friends}>
         <div>

@@ -1,0 +1,8 @@
+.clicked {
+    color: blue;
+    font-weight: bold;
+}
+
+.list {
+    display: flex; flex-direction: row;
+}

@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import { storeContext } from './../../redux/redux-store';
 
 const Profile = (p) =>{
-debugger;
   
 
   

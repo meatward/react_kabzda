@@ -33,7 +33,7 @@ let msg3elem = MSGelem
             <div>
                 <div>{msg3elem}</div>
                 <textarea value={p.fnValue} ref={msgadd} onChange={(e)=>{let ttx = e.currentTarget.value; p.fnUpdateBody(ttx)}} cols="30" rows="10"></textarea>
-                <button ref={msgRefbut} onClick={p.fnClick}>hello</button>
+                <button ref={msgRefbut} onClick={p.fnClick}>post666</button>
                 
                 {/* <Message message={MSGs[0].message} id={MSGs[0].id} />
             <Message message={MSGs[1].message} id={MSGs[1].id} /> */}
