@@ -8,7 +8,7 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import { Route } from 'react-router-dom';
 import DialogsCont from './components/Dialogs/DialogsContainer';
-import UsersCont from './components/Users/UsersCont';
+import Barebuh from './components/Users/UsersCont';
 import CheseCont from './components/Chese/CheseContainer';
 
 let someComponent = ()=> <Music />
@@ -39,7 +39,7 @@ const App = () => {
     
         <Route path='/message/0' component={News} />
      
-        <Route path='/users' render={ () => <UsersCont /> } />
+        <Route path='/users' render={ () => <Barebuh /> } />
         
         <Route path='/chese' render={ ()=><CheseCont /> } />
       </div>

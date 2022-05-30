@@ -6,3 +6,71 @@
 .list {
     display: flex; flex-direction: row;
 }
+
+.load{
+    margin: 0 31%;
+    padding: 0;
+    font-family: montserrat;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.load span {
+    position: inherrit;
+    margin-left: 34px;  
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(93, 128, 194);
+    font-size: 20px;
+    letter-spacing: 1px;
+    line-height: 200px;
+    animation: text 3s ease-in-out infinite;
+}
+@keyframes text {
+    50%{
+        color: rgb(236, 145, 145);
+    }
+}
+
+.center{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.ring{
+ position: absolute;
+ width: 200px;
+ height: 200px;
+ border-radius: 50%;
+ animation: ring 2s linear infinite;
+}
+@keyframes ring{
+    0%{
+        transform: rotate(0deg);
+        box-shadow: 3px 1px 7px #e33c22;
+    }
+    50%{
+        transform: rotate(180deg);
+        box-shadow: 3px 1px 7px #a0ff07;
+    }
+    100%{
+        transform: rotate(360deg);
+        box-shadow: 3px 1px 7px #01fa9b;
+    }
+}
+
+.ring:before{
+    position: absolute;
+    content: '';
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 5px darkmagenta;
+
+}

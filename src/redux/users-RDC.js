@@ -3,6 +3,7 @@ const UNFOLLOW_USER = 'UNFOLLOW-USER';
 const LOAD_USER = 'LOAD-USER';
 const PAGE_SCROLL = 'PAGE-SCROLL';
 const LOAD_COUNT = 'LOAD-COUNT';
+const SWITCH_FETCH = 'SWITCH_FETCH';
 
 let stateInit = {
   users: [
@@ -10,11 +11,12 @@ let stateInit = {
 pageSize: 10,
 totalUsersCount: 0,
 Page: 1,
-pagePos: 6
+pagePos: 6,
+isFetch: true,
 }
 
 const usersRDC =(bigData = stateInit, action)=>{
-  debugger
+  
     switch(action.type){
      case FOLLOW_USER: {
          return { ...bigData, 
@@ -55,6 +57,11 @@ const usersRDC =(bigData = stateInit, action)=>{
           
         }
       }
+      case SWITCH_FETCH: {
+       return { ...bigData,
+        //!bigData.isFetch
+        isFetch: action.fetch,}
+      }
         default:
         return bigData;
         }
@@ -67,5 +74,6 @@ export const ACunfollowing=(id)=>({type:UNFOLLOW_USER, id});
 export const ACloaduser=(users)=>({type:LOAD_USER, users});
 export const ACpageScroll=(page)=>({type:PAGE_SCROLL, page});
 export const ACcount=(count)=>({type:LOAD_COUNT, count});
+export const ACswitchFetch=(fetch)=>({type:SWITCH_FETCH, fetch});
 
 export default usersRDC;
