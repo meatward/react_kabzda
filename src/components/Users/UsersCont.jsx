@@ -1,7 +1,7 @@
 import Redux from 'react-redux';
 import { connect } from 'react-redux';
 //import UsersAPI from './UsersAPI';
-import { ACfollowing, ACloaduser, ACunfollowing, ACpageScroll, ACcount, ACswitchFetch } from './../../redux/users-RDC';
+import { fnFollow, fnLoadUser, ACunfollowing, fnPageScroll, ACcount, ACswitchFetch } from './../../redux/users-RDC';
 import Preloader from './../common/preloader/preloader';
 
 
@@ -22,11 +22,11 @@ class UsersAPI extends React.Component {
         componentDidMount(){
             // @ts-ignore
             this.props.fnSwitchFetch(true);
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.Page}&count=${this.props.pageSize}`).then(response => {
-                this.props.fnSwitchFetch(false);
-                    this.props.fnLoadUser(response.data.items)
-                    this.props.fnCount(response.data.totalCount)
-                });
+                axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.Page}&count=${this.props.pageSize}`).then(response => {
+                    this.props.fnSwitchFetch(false);
+                        this.props.fnLoadUser(response.data.items)
+                        this.props.fnCount(response.data.totalCount)
+                    });
             }
         
         pageScroll = (eee) =>{
@@ -81,16 +81,16 @@ let f1 = (state) => {
     }
 }
 
-let f2 = (dispatch)=>{
-    return{
-        fnFollow: ACfollowing,
-        fnUnfollow: ACunfollowing,
-        fnLoadUser: ACloaduser,
-        fnPageScroll: ACpageScroll,
-        fnCount: ACcount,
-        fnSwitchFetch: ACswitchFetch,
-    }
-}
+// let f2 = (dispatch)=>{
+//     return{
+//         fnFollow: ACfollowing,
+//         fnUnfollow: ACunfollowing,
+//         fnLoadUser: ACloaduser,
+//         fnPageScroll: ACpageScroll,
+//         fnCount: ACcount,
+//         fnSwitchFetch: ACswitchFetch,
+//     }
+// }
 
 // fnFollow: (id)=>{dispatch(ACfollowing(id))},
 //         fnUnfollow: (id)=>{dispatch(ACunfollowing(id))},
@@ -107,10 +107,10 @@ let f2 = (dispatch)=>{
 // }
 
 export default connect(f1,{
-        fnFollow: ACfollowing,
+        fnFollow,
         fnUnfollow: ACunfollowing,
-        fnLoadUser: ACloaduser,
-        fnPageScroll: ACpageScroll,
+        fnLoadUser,
+        fnPageScroll,
         fnCount: ACcount,
         fnSwitchFetch: ACswitchFetch,
     })(UsersAPI);

@@ -5,7 +5,33 @@
 .header img{
   width: 50px;
   padding-top: 6px;
-  display: block;
   margin: 0 auto;
+  margin-left: 50%;
 }
 
+.loginBlock{
+  position: relative;
+  float: left;
+  padding-left: 30px;
+  font-style: normal;
+  
+  text-decoration: overline;
+}
+
+.loginBlock a {
+  color: hotpink;
+  text-decoration: overline;
+}
+.loginBlock a:hover {
+  color: rgb(242, 255, 58);
+}
+
+.leftLogin {
+  display: inline-block;
+}
+
+.leftLogin {
+  float: right;
+  position: relative;
+  display: block;
+}

@@ -2,6 +2,8 @@ const UPDATE_CLICK = 'UPDATE-CLICK';
 const ADD_CLICK = 'ADD-CLICK';
 const UPDATE_POST = 'UPDATE-POST';
 const ADD_POST = 'ADD-POST';
+const PUSH_PROFILE = 'PUSH_PROFILE';
+const CHANGE_CURRENTID = 'CHANGE_CURRENTID';
 
 
 
@@ -14,17 +16,21 @@ let stateInit = {
   ]
   ,
 
-  skoba: 'none'
+  skoba: 'none',
+  profile:{
+    photos: ""
+  },
+  
+  currentPageId: 2
 }
 
 
 const profileRDC = (bigData = stateInit, action)=>{
-  
   switch (action.type){
   case ADD_CLICK:{
     return {
       ...bigData,
-      postData: [...bigData.postData, {id:6, message: bigData.skoba, likeCount: 7}],
+      postData: [{id:6, message: bigData.skoba, likeCount: 7}, ...bigData.postData],
       skoba: ""
     }
   }
@@ -50,7 +56,6 @@ const profileRDC = (bigData = stateInit, action)=>{
     // //   this._callscriber(this._bigData);
     // return stateCopy;}
 
-
   case ADD_POST:
     let newpost = {
       id: 5,
@@ -62,13 +67,24 @@ const profileRDC = (bigData = stateInit, action)=>{
   case UPDATE_POST:
     bigData.profileP.newPostttx = action.newText;
     return bigData;
+  case PUSH_PROFILE:
+    return {...bigData,
+    profile: action.response
+   }
+   case CHANGE_CURRENTID:
+     return {
+       ...bigData,
+       currentPageId: action.id
+     }
   default: 
     return bigData;
   }
 }
 export const ACaddpost=(text)=>({type:ADD_POST, postmsg:text})
 export const ACupdatepost0=()=>({type:UPDATE_POST, newText:''})
-export const ACupdatepost=(text)=>({type:UPDATE_POST, newText:text})
+export const ACupdatepost=(text)=>({type:UPDATE_POST, newText:text});
+export const ACpushP=(response)=>({type:PUSH_PROFILE, response});
+export const fnChangeId=(id)=>({type:CHANGE_CURRENTID, id});
 export const ACupdateclick =(carra3)=>{
   return {type: UPDATE_CLICK, text: carra3 };
 }

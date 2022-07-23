@@ -5,6 +5,7 @@ import sidebarRDC from './sidebar-RDC';
 import avatarRDC from "./avatarRDC";
 import usersRDC from "./users-RDC";
 import calcRDC from "./calcRDC";
+import AuthRDC from "./auth-RDC";
 
 import React from 'react';
 
@@ -14,7 +15,8 @@ let reducers = combineReducers({
     img:sidebarRDC,
     avatar:avatarRDC,
     usersP:usersRDC,
-    calcP:calcRDC 
+    calcP:calcRDC,
+    authP: AuthRDC
 }
 );
 
