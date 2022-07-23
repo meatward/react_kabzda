@@ -3,13 +3,14 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
-import Profile from './components/Profile/Profile';
+import ProfileAPIwithURL from './components/Profile/ProfileAPI';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import { Route } from 'react-router-dom';
 import DialogsCont from './components/Dialogs/DialogsContainer';
 import Barebuh from './components/Users/UsersCont';
 import CheseCont from './components/Chese/CheseContainer';
+import HeaderCont from './components/Header/HeaderCont';
 
 let someComponent = ()=> <Music />
 
@@ -18,7 +19,7 @@ const App = () => {
   return (
     
     <div className='app-wrapper'>
-      <Header />
+      <HeaderCont />
       <Navbar 
       // bigData={p.bigData.dialogsP.dData} 
       // img={p.bigData.img}
@@ -29,7 +30,7 @@ const App = () => {
   <DialogsCont /> }
          /> 
 
-        <Route path='/profile' render={()=><Profile
+        <Route path='/profile/:userId?' render={()=><ProfileAPIwithURL
    
         />} />
 

@@ -10,7 +10,7 @@ let stateInit = {
 ],
 pageSize: 10,
 totalUsersCount: 0,
-Page: 1,
+Page: 101,
 pagePos: 6,
 isFetch: true,
 }
@@ -69,10 +69,10 @@ const usersRDC =(bigData = stateInit, action)=>{
 
 
 
-export const ACfollowing=(id)=>({type:FOLLOW_USER, id});
+export const fnFollow=(id)=>({type:FOLLOW_USER, id});
 export const ACunfollowing=(id)=>({type:UNFOLLOW_USER, id});
-export const ACloaduser=(users)=>({type:LOAD_USER, users});
-export const ACpageScroll=(page)=>({type:PAGE_SCROLL, page});
+export const fnLoadUser=(users)=>({type:LOAD_USER, users});
+export const fnPageScroll=(page)=>({type:PAGE_SCROLL, page});
 export const ACcount=(count)=>({type:LOAD_COUNT, count});
 export const ACswitchFetch=(fetch)=>({type:SWITCH_FETCH, fetch});
 
