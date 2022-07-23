@@ -11,11 +11,15 @@ export default class User extends React.Component {
     componentDidMount(){
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pagePos}&count=${this.props.pageSize}`).then(response => {
                 this.props.fnLoadUser(response.data.items)
+                this.props.fnTotalCount(response.data.totalCount)
             });
     }
 
     pageScroll =(xPageNumber)=> {
-        this.props.pageClick(xPageNumber)
+        this.props.pageClick(xPageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${xPageNumber}&count=${this.props.pageSize}`).then(response => {
+            this.props.fnLoadUser(response.data.items)
+        });
     }
 
     componentDidUpdate(){

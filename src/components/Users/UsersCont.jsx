@@ -1,7 +1,7 @@
 import Redux from 'react-redux';
 import { connect } from 'react-redux';
 import User from './Users';
-import { ACfollowing, ACloaduser, ACunfollowing, ACpageclick } from './../../redux/users-RDC';
+import { ACfollowing, ACloaduser, ACunfollowing, ACpageclick, ACtotalcount } from './../../redux/users-RDC';
 
 
 let f1 = (state) => {
@@ -28,6 +28,7 @@ let f2 = (dispatch)=>{
         fnUnfollow: (id)=>{dispatch(ACunfollowing(id))},
         fnLoadUser: (users)=>{dispatch(ACloaduser(users))}
         , pageClick: (event)=>{dispatch(ACpageclick(event))}
+        , fnTotalCount: (event)=>{dispatch(ACtotalcount(event))}
        
     }
 }
