@@ -10,8 +10,13 @@ let stateInit = {
 ],
 pageSize: 10,
 totalUsersCount: 0,
+<<<<<<< HEAD
 Page: 101,
 pagePos: 6,
+=======
+Page: 1,
+pagePos: 144,
+>>>>>>> 1935e820884160196173cbf7a0bfcbbf286484f4
 isFetch: true,
 }
 
