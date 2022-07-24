@@ -4,36 +4,64 @@ import UserItem from './User__item/User__item';
 import {instance} from './../../redux/auth-RDC'
 
 let Users = (props) =>{
-    
-    let pages = [];
+
+   
+            let pages = [];
             
             let scape = Math.ceil(props.totalUsersCount/props.pageSize);
             for(let i=1; scape>i; i++){
                 pages.push(i)
             };
-            let scape2 = pages.slice((props.pagePos-3),(props.pagePos+3))
-            
-            let ololong = scape2.map( p=>{
-                return <span id={p} className = { props.pagePos=== Number(p) ? styles.clicked : ''} onClick={(element)=>{props.fnPageScroll(element.target.id); props.pageScroll(Number(element.target.id))}} >[{p}] </span>
-            debugger}) 
+            let lastpage = (pages.slice(-1))-1
 
-            let sUserBox = props.users1.users.map(b => <div> <UserItem name={b.name} id={b.id} imgurl={b.photos.small} isfollow={b.followed} message={b.message} city={b.city} fnFollow={props.fnFollow} fnUnfollow={props.fnUnfollow} />
+            let scape2 = pages.slice(((props.pagePos)-2),((props.pagePos)+1))
+            
+            const Last = () =>{
+                return (<div> <span id={lastpage} className = { props.pagePos=== Number({lastpage}) ? styles.clicked : ''} onClick={(element)=>{props.fnPageScroll(element.target.id); props.pageScroll(Number(element.target.id))}} >[{lastpage}] </span></div>)
+                
+            }
+            let ololong = scape2.map( p=>{
+                return <div><span id={p} className = { props.pagePos=== Number(p) ? styles.clicked : ''} onClick={(element)=>{props.fnPageScroll(element.target.id); props.pageScroll(Number(element.target.id))}} >[{p}] </span>
+                </div>
+            }) 
+
+            let sUserBox = props.users1.users.map(b =>  <div> <UserItem name={b.name} id={b.id} imgurl={b.photos.small} isfollow={b.followed} message={b.message} city={b.city} fnFollow={props.fnFollow} fnUnfollow={props.fnUnfollow} />
                 <div> {b.followed
                 
-                    ? <button onClick={() => instance.delete(`/follow/${b.id}`,{}).then(response=>{console.log(response.data.messages)}, props.fnUnfollow(b.id))} >c==3</button>
-                    : <button onClick={() => { 
-                        instance.post(`/follow/${b.id}`,{}, {}).then(response=>{console.log(response.data.messages)},
+                
+                    ? <button onClick={
+                        () => instance.delete(`/follow/${b.id}`).then(
+                        response=>{
+                            debugger
+                            console.log(response.data.messages); if(response.data.resultCode===0){props.fnUnfollow(b.id)}})
+                        } >c==3</button>
+                    : <button onClick={() => {
+                        instance.post(`/follow/${b.id}`).then(response=>{
+                            debugger
+                            console.log(response.data.messages)},
                         props.fnFollow(b.id))}} >Follow</button>}
-                </div> </div>);
+                </div> 
+                <button onClick={()=>{instance.get(`/follow/${b.id}`).then(response=>{
+                    alert(response.data) })}}>?</button>
+                </div>); 
+                debugger
+
+                let jopa = ()=>{return props.fnPageScroll(2), props.pageScroll(2)}
     return(
         <div>
-      <div className = {styles.list} >{ololong}5</div>
+      <div className = {styles.list} >{ololong}</div>
         <div>
+        <div>
+        <button onClick={jopa}>2</button>
+        </div>
+            <div>
+        <Last /> 
+        </div>
                     {sUserBox}
         <span></span>
         </div>
         <br />
-        
+        <div className = {styles.list} >{ololong}</div>
     <button >Reload</button>
       
     </div>

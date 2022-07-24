@@ -42,7 +42,6 @@
       "last 1 safari version"
     ]
   },
- 
   "devDependencies": {
     "cors": "^2.8.5",
     "curl": "^0.1.4",

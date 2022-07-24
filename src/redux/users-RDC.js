@@ -10,8 +10,8 @@ let stateInit = {
 ],
 pageSize: 10,
 totalUsersCount: 0,
-Page: 101,
-pagePos: 6,
+Page: 1,
+pagePos: 144,
 isFetch: true,
 }
 
@@ -23,7 +23,7 @@ const usersRDC =(bigData = stateInit, action)=>{
           users: bigData.users.map(
             u => {
               if (action.id===u.id){
-                return{...u, isfollow: true}
+                return{...u, followed: true}
               }
               return u;
             }
@@ -34,7 +34,7 @@ const usersRDC =(bigData = stateInit, action)=>{
           ...bigData,
           users: bigData.users.map(u => {
             if (u.id===action.id){
-              return {...u, isfollow: false}
+              return {...u, followed: false}
             }
             return u;
           })

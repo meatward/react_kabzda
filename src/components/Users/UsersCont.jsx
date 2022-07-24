@@ -22,7 +22,7 @@ class UsersAPI extends React.Component {
         componentDidMount(){
             // @ts-ignore
             this.props.fnSwitchFetch(true);
-                axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.Page}&count=${this.props.pageSize}`).then(response => {
+                axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.Page}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
                     this.props.fnSwitchFetch(false);
                         this.props.fnLoadUser(response.data.items)
                         this.props.fnCount(response.data.totalCount)
@@ -31,7 +31,7 @@ class UsersAPI extends React.Component {
         
         pageScroll = (eee) =>{
             this.props.fnSwitchFetch(true);
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${eee}&count=${this.props.pageSize}`).then(
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${eee}&count=${this.props.pageSize}`, {withCredentials: true}).then(
                 response => {
                     this.props.fnSwitchFetch(false);
                     this.props.fnLoadUser(response.data.items)
