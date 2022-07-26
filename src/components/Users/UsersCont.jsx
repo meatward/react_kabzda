@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 //import UsersAPI from './UsersAPI';
 import { fnFollow, fnLoadUser, ACunfollowing, fnPageScroll, ACcount, ACswitchFetch } from './../../redux/users-RDC';
 import Preloader from './../common/preloader/preloader';
+import {getUsers} from './../../../src/api/api'
 
 
 import styles from './Users.module.css';
@@ -22,19 +23,19 @@ class UsersAPI extends React.Component {
         componentDidMount(){
             // @ts-ignore
             this.props.fnSwitchFetch(true);
-                axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.Page}&count=${this.props.pageSize}`, {withCredentials: true}).then(response => {
+                getUsers(this.props.Page, this.props.pageSize).then(response => {
                     this.props.fnSwitchFetch(false);
-                        this.props.fnLoadUser(response.data.items)
-                        this.props.fnCount(response.data.totalCount)
+                        this.props.fnLoadUser(response.items)
+                        this.props.fnCount(response.totalCount)
                     });
             }
         
         pageScroll = (eee) =>{
             this.props.fnSwitchFetch(true);
-            axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${eee}&count=${this.props.pageSize}`, {withCredentials: true}).then(
+            getUsers(eee,this.props.pageSize).then(
                 response => {
                     this.props.fnSwitchFetch(false);
-                    this.props.fnLoadUser(response.data.items)
+                    this.props.fnLoadUser(response.items)
                 }
             )
         }

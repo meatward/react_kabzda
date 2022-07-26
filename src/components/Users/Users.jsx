@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './Users.module.css';
 import UserItem from './User__item/User__item';
-import {instance} from './../../redux/auth-RDC'
+import {instance} from './../../redux/auth-RDC';
+import {followUser, unfollowUser, isFriend} from './../../api/api'
 
 let Users = (props) =>{
 
@@ -30,18 +31,18 @@ let Users = (props) =>{
                 
                 
                     ? <button onClick={
-                        () => instance.delete(`/follow/${b.id}`).then(
+                        () => unfollowUser(b.id).then(
                         response=>{
                             debugger
-                            console.log(response.data.messages); if(response.data.resultCode===0){props.fnUnfollow(b.id)}})
+                            console.log(response.messages); if(response.resultCode===0){props.fnUnfollow(b.id)}})
                         } >c==3</button>
                     : <button onClick={() => {
-                        instance.post(`/follow/${b.id}`).then(response=>{
+                        followUser(b.id).then(response=>{
                             debugger
                             console.log(response.data.messages)},
                         props.fnFollow(b.id))}} >Follow</button>}
                 </div> 
-                <button onClick={()=>{instance.get(`/follow/${b.id}`).then(response=>{
+                <button onClick={()=>{isFriend(b.id).then(response=>{
                     alert(response.data) })}}>?</button>
                 </div>); 
                 debugger
