@@ -1,5 +1,6 @@
 
 import axios from "axios";
+
 const SET_USER_DATA = 'SET_USER_DATA';
 
 let stateInit = {
@@ -30,5 +31,6 @@ export const instance = axios.create({
     baseURL:'https://social-network.samuraijs.com/api/1.0/',
     headers:{"API-KEY": "82b4e2a5-93df-4fb7-a008-385c7407ddcc"}
 })
+
 
 export default AuthRDC;

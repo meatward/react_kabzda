@@ -10,8 +10,10 @@ let stateInit = {
 ],
 pageSize: 10,
 totalUsersCount: 0,
+
 Page: 1,
 pagePos: 144,
+
 isFetch: true,
 }
 
