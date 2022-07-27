@@ -1,9 +1,9 @@
 import Redux from 'react-redux';
 import { connect } from 'react-redux';
 //import UsersAPI from './UsersAPI';
-import { fnFollow, fnLoadUser, ACunfollowing, fnPageScroll, ACcount, ACswitchFetch } from './../../redux/users-RDC';
+import { fnFollow, fnLoadUser, ACunfollowing, fnPageScroll, ACcount, ACswitchFetch, ACswitchButton } from './../../redux/users-RDC';
 import Preloader from './../common/preloader/preloader';
-import {getUsers} from './../../../src/api/api'
+import {usersAPI} from './../../api/api'
 
 
 import styles from './Users.module.css';
@@ -23,7 +23,7 @@ class UsersAPI extends React.Component {
         componentDidMount(){
             // @ts-ignore
             this.props.fnSwitchFetch(true);
-                getUsers(this.props.Page, this.props.pageSize).then(response => {
+            usersAPI.getUsers(this.props.Page, this.props.pageSize).then(response => {
                     this.props.fnSwitchFetch(false);
                         this.props.fnLoadUser(response.items)
                         this.props.fnCount(response.totalCount)
@@ -32,7 +32,7 @@ class UsersAPI extends React.Component {
         
         pageScroll = (eee) =>{
             this.props.fnSwitchFetch(true);
-            getUsers(eee,this.props.pageSize).then(
+            usersAPI.getUsers(eee,this.props.pageSize).then(
                 response => {
                     this.props.fnSwitchFetch(false);
                     this.props.fnLoadUser(response.items)
@@ -56,6 +56,8 @@ class UsersAPI extends React.Component {
         fnPageScroll={this.props.fnPageScroll}
         fnUnfollow={this.props.fnUnfollow}
         fnFollow={this.props.fnFollow} 
+        ACswitchButton ={this.props.ACswitchButton}
+        buttonLoad = {this.props.buttonLoad}
         />
         
         </>
@@ -79,6 +81,7 @@ let f1 = (state) => {
         Page: state.usersP.Page,
         pagePos: state.usersP.pagePos,
         isFetch: state.usersP.isFetch,
+        buttonLoad: state.usersP.buttonLoad
     }
 }
 
@@ -114,6 +117,7 @@ export default connect(f1,{
         fnPageScroll,
         fnCount: ACcount,
         fnSwitchFetch: ACswitchFetch,
+        ACswitchButton
     })(UsersAPI);
 
 // const UsersCont = connect(f1,f2)(UsersAPI);

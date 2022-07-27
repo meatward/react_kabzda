@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Users.module.css';
 import UserItem from './User__item/User__item';
 import {instance} from './../../redux/auth-RDC';
-import {followUser, unfollowUser, isFriend} from './../../api/api'
+import {usersAPI} from './../../api/api'
 
 let Users = (props) =>{
 
@@ -31,21 +31,32 @@ let Users = (props) =>{
                 
                 
                     ? <button onClick={
-                        () => unfollowUser(b.id).then(
+                        
+                        () => {
+                            props.ACswitchButton(true);
+                            if(props.buttonLoad===false){usersAPI.unfollowUser(b.id).then(
                         response=>{
-                            debugger
-                            console.log(response.messages); if(response.resultCode===0){props.fnUnfollow(b.id)}})
-                        } >c==3</button>
+                            console.log(response.messages); if(response.resultCode===0){props.fnUnfollow(b.id)}});
+                            props.ACswitchButton(false)}
+                        }} >c==3</button>
                     : <button onClick={() => {
-                        followUser(b.id).then(response=>{
-                            debugger
+                        props.ACswitchButton(true);
+                        if (props.buttonLoad===false){usersAPI.followUser(b.id).then(response=>{
                             console.log(response.data.messages)},
-                        props.fnFollow(b.id))}} >Follow</button>}
+                        props.fnFollow(b.id));
+                        props.ACswitchButton(false)}
+
+                        }} >Follow</button>}
                 </div> 
-                <button onClick={()=>{isFriend(b.id).then(response=>{
-                    alert(response.data) })}}>?</button>
+                <button onClick={()=>{
+                    if (props.buttonLoad===false){
+                    props.ACswitchButton(true);
+                    usersAPI.isFriend(b.id).then(response=>{
+                    alert(response.data) }).then(props.ACswitchButton(false));
+                }debugger
+                    }}>?</button>
                 </div>); 
-                debugger
+                
 
                 let jopa = ()=>{return props.fnPageScroll(2), props.pageScroll(2)}
     return(

@@ -4,17 +4,17 @@ const LOAD_USER = 'LOAD-USER';
 const PAGE_SCROLL = 'PAGE-SCROLL';
 const LOAD_COUNT = 'LOAD-COUNT';
 const SWITCH_FETCH = 'SWITCH_FETCH';
+const BUTTON_SWITCH_FETCH = 'BUTTON_SWITCH_FETCH';
 
 let stateInit = {
   users: [
 ],
 pageSize: 10,
 totalUsersCount: 0,
-
 Page: 1,
 pagePos: 144,
-
 isFetch: true,
+buttonLoad: false
 }
 
 const usersRDC =(bigData = stateInit, action)=>{
@@ -64,6 +64,11 @@ const usersRDC =(bigData = stateInit, action)=>{
         //!bigData.isFetch
         isFetch: action.fetch,}
       }
+      case BUTTON_SWITCH_FETCH: {
+        return {...bigData,
+        buttonLoad: action.solo
+        }
+      }
         default:
         return bigData;
         }
@@ -77,5 +82,6 @@ export const fnLoadUser=(users)=>({type:LOAD_USER, users});
 export const fnPageScroll=(page)=>({type:PAGE_SCROLL, page});
 export const ACcount=(count)=>({type:LOAD_COUNT, count});
 export const ACswitchFetch=(fetch)=>({type:SWITCH_FETCH, fetch});
+export const ACswitchButton= (solo) => ({type:BUTTON_SWITCH_FETCH, solo});
 
 export default usersRDC;
