@@ -23,7 +23,7 @@ let Users = (props) =>{
             }
             let ololong = scape2.map( p=>{
                 return <div><span id={p} className = { props.pagePos=== Number(p) ? styles.clicked : ''} onClick={(element)=>{props.fnPageScroll(element.target.id); props.pageScroll(Number(element.target.id))}} >[{p}] </span>
-                </div>
+                </div>  
             }) 
 
             let sUserBox = props.users1.users.map(b =>  <div> <UserItem name={b.name} id={b.id} imgurl={b.photos.small} isfollow={b.followed} message={b.message} city={b.city} fnFollow={props.fnFollow} fnUnfollow={props.fnUnfollow} />
@@ -38,23 +38,26 @@ let Users = (props) =>{
                         response=>{
                             console.log(response.messages); if(response.resultCode===0){props.fnUnfollow(b.id)}});
                             props.ACswitchButton(false)}
-                        }} >c==3</button>
+                        }} >c==3 doubt c--3</button>
                     : <button onClick={() => {
                         props.ACswitchButton(true);
                         if (props.buttonLoad===false){usersAPI.followUser(b.id).then(response=>{
                             console.log(response.data.messages)},
                         props.fnFollow(b.id));
                         props.ACswitchButton(false)}
-
-                        }} >Follow</button>}
+                        debugger
+                        }} >--Fo13 or 1ow--</button>}
+                        
                 </div> 
                 <button onClick={()=>{
                     if (props.buttonLoad===false){
                     props.ACswitchButton(true);
                     usersAPI.isFriend(b.id).then(response=>{
-                    alert(response.data) }).then(props.ACswitchButton(false));
-                }debugger
-                    }}>?</button>
+                    alert(response.data) }).then(props.ACswitchButton(false)).catch((error)=>{if(error.response.status === 404||401){
+                        alert("youre not ,-,")
+                     }}); ;
+                }
+                    }}>?what?</button>
                 </div>); 
                 
 
@@ -65,6 +68,10 @@ let Users = (props) =>{
         <div>
         <div>
         <button onClick={jopa}>2</button>
+        </div>
+        <div>
+        <button onClick={()=>{usersAPI.auth()}}>auth</button>
+        <button onClick={()=>{usersAPI.logout()}}>logout</button>
         </div>
             <div>
         <Last /> 

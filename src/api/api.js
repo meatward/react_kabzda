@@ -13,12 +13,16 @@ export const usersAPI = {
                     response.data
                     );
             },
- followUse(id){
+ followUser(id){
     return instance.post(`/follow/${id}`)
 },
- unfollowUse(id){
+ unfollowUser(id){
     return instance.delete(`/follow/${id}`).then(response => response.data)
 },
- isFriend(id){ return instance.get(`/follow/${id}`)}
+ isFriend(id){ return instance.get(`/follow/${id}`)},
+ auth(email="ooooo2005@mail.ru",password="0000aA",rememberMe=true){return instance.post(`/auth/login`, {email, password, rememberMe})},
+ logout(){
+     instance.delete(`/auth/login`)
+ }
 }
 
